@@ -1,0 +1,11 @@
+pandas
+requests
+python-bcb
+ipeadatapy
+quandl
+openmeteo-requests
+cdsapi
+earthengine-api
+lxml
+pyarrow
+setuptools

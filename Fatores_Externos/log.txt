@@ -1,0 +1,102 @@
+2025-10-18 14:33:55 | INFO     | Logging configurado. Saída no terminal e salva em: log.txt
+2025-10-18 14:33:55 | INFO     | ======================================================================
+2025-10-18 14:33:55 | INFO     | INICIANDO SCRIPT DE COLETA DE FATORES EXTERNOS - v0.1.4.1.0
+2025-10-18 14:33:55 | INFO     | ======================================================================
+2025-10-18 14:33:55 | INFO     | Log de versão adicionado a 'versionamento.txt'
+2025-10-18 14:33:55 | INFO     | Período de análise definido: 2022-10-19 a 2025-10-18
+2025-10-18 14:33:55 | INFO     | 
+----------------------------------------------------------------------
+2025-10-18 14:33:55 | INFO     | ETAPA 0: VERIFICANDO CREDENCIAIS e APIs
+2025-10-18 14:33:55 | INFO     | ----------------------------------------------------------------------
+2025-10-18 14:33:55 | INFO     | Procurando arquivo de logins: 'logins.py'
+2025-10-18 14:33:55 | INFO     | ✅ Arquivo 'logins.py' importado.
+2025-10-18 14:33:55 | INFO     | ✅ Chaves API (Quandl, CDS) preenchidas.
+2025-10-18 14:33:55 | INFO     | Verificando arquivo .cdsapirc em: C:\Users\Willian\.cdsapirc
+2025-10-18 14:33:55 | INFO     | ✅ Arquivo .cdsapirc encontrado.
+2025-10-18 14:33:55 | INFO     | Inicializando Google Earth Engine (GEE)...
+2025-10-18 14:33:58 | WARNING  | Retrying (Retry(total=0, connect=None, read=False, redirect=None, status=None)) after connection broken by 'MustDowngradeError('The server yielded its support for HttpVersion.h3 through the Alt-Svc header while unable to do so. To remediate that issue, either disable HttpVersion.h3 or reach out to the server admin.')': /$discovery/rest?version=v1&prettyPrint=false
+2025-10-18 14:34:00 | WARNING  |    Inicialização GEE padrão falhou (module 'ee.data' has no attribute '_cloud_api_user_project'). Tentando projeto explícito 'quantum-minds-475514'...
+2025-10-18 14:34:02 | INFO     | ✅ GEE inicializado com sucesso (projeto explícito).
+2025-10-18 14:34:02 | INFO     | Versão ipeadatapy: 0.1.9
+2025-10-18 14:34:02 | INFO     | Versão python-bcb: 0.3.3
+2025-10-18 14:34:02 | INFO     | ----------------------------------------------------------------------
+2025-10-18 14:34:02 | INFO     | 
+Inicializando cliente CDS (Copernicus)...
+2025-10-18 14:34:04 | INFO     | ✅ Cliente CDS inicializado.
+2025-10-18 14:34:04 | INFO     | 
+Iniciando coleta de dados para o período:
+2025-10-18 14:34:04 | INFO     |   Data Início: 2022-10-19
+2025-10-18 14:34:04 | INFO     |   Data Fim:    2025-10-18
+2025-10-18 14:34:04 | INFO     | 
+----------------------------------------------------------------------
+2025-10-18 14:34:04 | INFO     | ETAPA 1: COLETA - Macro e Commodities
+2025-10-18 14:34:04 | INFO     | ----------------------------------------------------------------------
+2025-10-18 14:34:04 | INFO     |   Iniciando: macro_bcb (Câmbio e Selic)...
+2025-10-18 14:34:11 | INFO     |   ✅ macro_bcb: Coleta OK.
+2025-10-18 14:34:11 | INFO     |   Iniciando: macro_ipea (IPCA)...
+2025-10-18 14:34:11 | WARNING  |    'from ipeadatapy import get' FALHOU.
+2025-10-18 14:34:11 | ERROR    |   ❌ Erro macro_ipea: Nem 'get' nem 'Serie' disponíveis após tentativas.
+2025-10-18 14:34:11 | INFO     |   Iniciando: macro_cepea (Milho)...
+2025-10-18 14:34:11 | ERROR    |   ❌ Erro HTTP em macro_cepea: 404 Client Error: Not Found for url: https://www.cepea.org.br/api/series/id/104?start_date=2022-10-19&end_date=2025-10-18&currency=BRL&_=1760808851
+2025-10-18 14:34:11 | ERROR    |      URL que falhou (requisição final): https://www.cepea.org.br/api/series/id/104?start_date=2022-10-19&end_date=2025-10-18&currency=BRL&_=1760808851
+2025-10-18 14:34:11 | INFO     |   Iniciando: macro_quandl (Soja Futuro)...
+2025-10-18 14:34:12 | ERROR    |   ❌ Erro em macro_quandl: (Status 403) Something went wrong. Please try again. If you continue to have problems, please contact us at connect@quandl.com.
+2025-10-18 14:34:12 | WARNING  |      Lembrete: Verifique inscrição no dataset 'CHRIS/CME_S1'.
+2025-10-18 14:34:12 | INFO     | 
+----------------------------------------------------------------------
+2025-10-18 14:34:12 | INFO     | ETAPA 2: COLETA - Clima e Geografia
+2025-10-18 14:34:12 | INFO     | ----------------------------------------------------------------------
+2025-10-18 14:34:12 | INFO     |   Iniciando: clima_inmet (Estação A601)...
+2025-10-18 14:34:13 | ERROR    |   ❌ Erro HTTP em clima_inmet: 404 Client Error: Not Found for url: https://apitempo.inmet.gov.br/estacoes/diaria/2022-10-19/2025-10-18/A601?_=1760808852
+2025-10-18 14:34:13 | ERROR    |      URL que falhou: https://apitempo.inmet.gov.br/estacoes/diaria/2022-10-19/2025-10-18/A601?_=1760808852
+2025-10-18 14:34:13 | INFO     |   Iniciando: clima_era5 (Prec. Open-Meteo)...
+2025-10-18 14:34:14 | INFO     |   Iniciando: clima_chirps_gee (Precip. GEE)...
+2025-10-18 14:34:15 | WARNING  |   [STUB] NOAA: Previsões (GFS/CFSv2) não são históricas.
+2025-10-18 14:34:15 | INFO     | 
+----------------------------------------------------------------------
+2025-10-18 14:34:15 | INFO     | ETAPA 3: COLETA - Satélite e Vegetação
+2025-10-18 14:34:15 | INFO     | ----------------------------------------------------------------------
+2025-10-18 14:34:15 | INFO     |   Iniciando: satelite_modis_ndvi (GEE)...
+2025-10-18 14:34:15 | WARNING  |   [STUB] Sentinel-2: Dados muito pesados.
+2025-10-18 14:34:15 | WARNING  |   [STUB] MapBiomas: Dados anuais, não série temporal.
+2025-10-18 14:34:15 | INFO     | 
+----------------------------------------------------------------------
+2025-10-18 14:34:15 | INFO     | ETAPA 4: COLETA - Hidrologia e Energia
+2025-10-18 14:34:15 | INFO     | ----------------------------------------------------------------------
+2025-10-18 14:34:15 | INFO     |   Iniciando: hidro_ana (Nível Rio)...
+2025-10-18 14:34:16 | ERROR    |   ❌ Erro HTTP em hidro_ana: 500 Server Error: Internal Server Error for url: https://telemetriaws1.ana.gov.br/ServiceANA.asmx/GetDadosTelemetricos?codEstacao=18580000&dataInicio=2022-10-19&dataFim=2025-10-18
+2025-10-18 14:34:16 | WARNING  |      Servidor ANA (500) instável.
+2025-10-18 14:34:16 | WARNING  |   [STUB] ONS: Requer scraping.
+2025-10-18 14:34:16 | INFO     | 
+----------------------------------------------------------------------
+2025-10-18 14:34:16 | INFO     | ETAPA 5: COLETA - Stubs (Não Coletados)
+2025-10-18 14:34:16 | INFO     | ----------------------------------------------------------------------
+2025-10-18 14:34:16 | WARNING  |   [STUB] ANTT/Antaq: Datasets estáticos.
+2025-10-18 14:34:16 | WARNING  |   [STUB] AIS Vessel Traffic: APIs pagas.
+2025-10-18 14:34:16 | WARNING  |   [STUB] MAPA/FAO: Relatórios qualitativos (requer NLP).
+2025-10-18 14:34:16 | INFO     | 
+======================================================================
+2025-10-18 14:34:16 | INFO     | ETAPA 6: SALVANDO DADOS em 'dados_coletados'...
+2025-10-18 14:34:16 | INFO     | ======================================================================
+2025-10-18 14:34:16 | INFO     | 
+======================================================================
+2025-10-18 14:34:16 | INFO     | CHECKLIST FINAL DA COLETA
+2025-10-18 14:34:16 | INFO     | ======================================================================
+2025-10-18 14:34:16 | INFO     |   - macro_bcb           : ✅ Sucesso (1.096 regs)
+2025-10-18 14:34:16 | INFO     |   - macro_ipea          : ❌ Falha (Biblioteca?)
+2025-10-18 14:34:16 | INFO     |   - macro_cepea         : ❌ Falha (404)
+2025-10-18 14:34:16 | INFO     |   - macro_quandl        : ❌ Falha (Permissão 403)
+2025-10-18 14:34:16 | INFO     |   - clima_inmet         : ❌ Falha (404)
+2025-10-18 14:34:16 | INFO     |   - clima_chirps_gee    : ✅ Sucesso (964 regs)
+2025-10-18 14:34:16 | INFO     |   - clima_era5          : ✅ Sucesso (1.089 regs)
+2025-10-18 14:34:16 | INFO     |   - satelite_modis_ndvi : ✅ Sucesso (68 regs)
+2025-10-18 14:34:16 | INFO     |   - hidro_ana           : ❌ Falha (500)
+2025-10-18 14:34:16 | INFO     | 
+======================================================================
+2025-10-18 14:34:16 | INFO     | EXECUÇÃO CONCLUÍDA - v0.1.4.1.0
+2025-10-18 14:34:16 | INFO     |   - 4 de 9 fontes de dados salvas com sucesso.
+2025-10-18 14:34:16 | INFO     |   - Arquivos .parquet salvos em: 'C:\Users\Willian\OneDrive\Documents\GitHub\Quantum Minds\Quantum-Minds\Fatores_Externos\dados_coletados'
+2025-10-18 14:34:16 | INFO     |   - Log completo salvo em: 'C:\Users\Willian\OneDrive\Documents\GitHub\Quantum Minds\Quantum-Minds\Fatores_Externos\log.txt'
+2025-10-18 14:34:16 | INFO     | ======================================================================
+2025-10-18 14:34:16 | INFO     | Próxima etapa: Unir, limpar e processar estes dados para o cálculo do IER.
+2025-10-18 14:34:16 | INFO     | ======================================================================

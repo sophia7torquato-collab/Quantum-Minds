@@ -1,0 +1,59 @@
+======================================================================
+Versão 0.1.4.1.0 - 2025-10-18
+- Foco em corrigir a regressão do BCB e investigar erro 404 do INMET.
+- Revertida a lógica de formato de data no `fetch_macro_bcb` (YYYY-MM-DD primeiro).
+- Modificada a função `fetch_clima_inmet` para:
+    - Testar estação A601 (Rio de Janeiro) em vez de A701.
+    - Remover a tentativa de URL alternativa.
+- Mantidas as tentativas anteriores para IPEA e CEPEA.
+======================================================================
+======================================================================
+Versão 0.1.3.1.0 - 2025-10-18
+- Foco na correção do erro persistente 'ipeadatapy has no attribute get'.
+- Modificada a função `fetch_macro_ipea` para:
+    - Tentar importar a função `get` diretamente (`from ipeadatapy import get`).
+    - Adicionar mais logs de depuração sobre o estado do módulo `ipeadatapy`.
+======================================================================
+======================================================================
+Versão 0.1.2.1.0 - 2025-10-18
+- Foco na correção do erro 'ipeadatapy has no attribute get'.
+- Modificada a função `fetch_macro_ipea` para:
+    - Adicionar logs de depuração mais detalhados sobre a importação.
+    - Tentar acessar a função `get` diretamente via `ipeadatapy.get`.
+    - Logar a versão explícita da biblioteca `ipeadatapy`.
+- Ajustada a lógica de fallback da data no `fetch_macro_bcb`.
+======================================================================
+======================================================================
+Versão 0.1.1.1.0 - 2025-10-18
+- Adicionado 'setuptools' aos requisitos para resolver erro 'pkg_resources'.
+- Implementado logging para arquivo 'log.txt'.
+- Adicionado checklist de sucesso/falha no final da execução.
+- Implementado sistema de versionamento e arquivo 'versionamento.txt'.
+- Novas tentativas de correção para APIs BCB, IPEA, CEPEA, INMET.
+- Melhorada formatação geral dos logs.
+======================================================================
+Versão 0.0.6.1.0 - 2025-10-18
+- Adicionado 'pyarrow' aos requisitos para salvar arquivos Parquet.
+- Corrigidas 5 funções de API (bcb, ipea, cepea, inmet, era5) com base nos logs.
+======================================================================
+Versão 0.0.5.1.0 - 2025-10-18
+- Corrigido NameError para START_DATE_STR e END_DATE_STR.
+- Ajustado path para encontrar logins.py corretamente.
+======================================================================
+Versão 0.0.4.1.0 - 2025-10-18
+- Simplificada autenticação GEE para usar 'earthengine authenticate' via terminal.
+- Removida lógica de Conta de Serviço (arquivo JSON).
+======================================================================
+Versão 0.0.3.1.0 - 2025-10-18
+- Refatorado para usar 'logins.py' para armazenar chaves API.
+- Adicionada lógica para criar o arquivo '.cdsapirc' automaticamente.
+======================================================================
+Versão 0.0.2.1.0 - 2025-10-18
+- Adicionadas funções para buscar dados de mais fontes (Quandl, GEE, CDS, Open-Meteo, ANA via ana-api).
+- Criado arquivo 'requirements.txt'.
+======================================================================
+Versão 0.0.1.1.0 - 2025-10-18
+- Versão inicial do script.
+- Funções básicas para buscar dados de BCB, CEPEA, IBGE, INMET.
+- Funções stub para dados complexos/pagos.
+======================================================================
